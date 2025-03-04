@@ -7,7 +7,8 @@ const PORT = 3000;
 const app = express();
 // App take everything from express
 
-
+app.use(express.json())
+app.use(express.urlencoded({extended : true}))
 
 app.get('/', (request, response) => {
     return response.end(`Hello World`);
@@ -43,6 +44,37 @@ app.get('/dogs/:id', (request, response) => {
     }
     return response.status(200).json(dogByID)
 })
+
+app.post('/movies', (request, response) => {
+    const {title, genre} = request.body;
+    if(!title, !genre) {
+        return response.status(400).json({message: `all fields are required`});
+    };
+    const newMovie = {
+        id : movies.length + 1,
+        title,
+        genre
+    };
+    movies.push(newMovie);
+    return response.status(201).json(newMovie);
+});
+
+app.post('/dogs', (request, response) => {
+    const {name, age, race} = request.body;
+    
+    if (!name, !age, !race) {
+        return response.status(400).json({message : 'All fields are required'});
+    };
+    const newDog = {
+        id : dogs.length + 1,
+        name,
+        age,
+        race
+    };
+
+    dogs.push(newDog);
+    return response.status(201).json(newDog)
+});
 
 app.listen(PORT, () => {
     console.log( `server is running on port ${PORT}`);
