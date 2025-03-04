@@ -37,8 +37,11 @@ app.get('/dogs', (request, response) => {
 
 app.get('/dogs/:id', (request, response) => {
     const {id} = request.params;
-    const dogsByID = dogs.find(dog => dog.id == id )
-    return response.json(dogsByID)
+    const dogByID = dogs.find(dog => dog.id == id )
+    if(!dogByID) {
+        return response.status(404).json({message: `Dog not found`})
+    }
+    return response.status(200).json(dogByID)
 })
 
 app.listen(PORT, () => {
