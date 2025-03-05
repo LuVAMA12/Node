@@ -1,0 +1,71 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+html{
+  font-size: 62.5%;
+}
+
+body{
+  font-size: 1.6rem;
+  box-sizing: border-box;
+}
+
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+.user-card {
+  min-width: 200px;
+  background-color: #88888880;
+  padding: 2rem;
+  margin: 10px;
+  border-radius: 4px;
+}
+
+.cards {
+  justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+ul{
+  margin: 0;
+  padding:0;
+}
+li {
+  list-style: none;
+}
+
+.error {
+  margin-top: 2rem;
+  color:red;
+}
+
+.error li:first-child{
+  font-size: 3rem;
+  font-weight: bold;
+}
