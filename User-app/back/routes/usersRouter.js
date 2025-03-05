@@ -21,9 +21,10 @@ usersRouter.get('/users/:id', (req, res) => {
 })
 
 usersRouter.post('/users', (req, res) => {
+    console.log(req.body)
     const { firstName, lastName, telephone, address, hobbies} = req.body
     
-    if (!firstName, !lastName, !telephone, !address, !hobbies) {
+    if (!firstName || !lastName || !telephone || !address || !hobbies) {
         return res.status(400).json({message: 'All fields are required'})
     }
     
@@ -33,11 +34,11 @@ usersRouter.post('/users', (req, res) => {
         lastName,
         telephone,
         address,
-        hobbies: [ hobbies]
+        hobbies
     }
 
     users.push(newUser)
-    return res.status(201).json(newUser)
+    return res.status(201).json({message:'New user created',newUser})
 
 })
 
