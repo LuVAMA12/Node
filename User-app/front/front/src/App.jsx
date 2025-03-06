@@ -31,7 +31,7 @@ function App() {
 
   const handleNewHobby = (e, hobby) => {
     e.preventDefault();
-    hobbies.push(hobby);
+    setHobbies(hobbies => [...hobbies, hobby]);
   };
 
   const handleSubmit = async (e) => {

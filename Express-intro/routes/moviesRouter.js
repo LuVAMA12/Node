@@ -3,7 +3,13 @@ import movies from "../data/movies.js";
 
 const movieRouter = Router()
 
-movieRouter.get('/movies', (request, response) => {
+const middleware = (req, res, next) => {
+    console.log('This is my middleware')
+    next()
+}
+// a middleware have 3 options => request, response and next
+
+movieRouter.get('/movies', middleware, (request, response) => {
     return response.json(movies);
 });
 
@@ -64,6 +70,10 @@ movieRouter.delete('/movies/:id', (req, res) => {
     }catch(err){
         return res.status(500).json({message: `Internal server error`})
     }
+})
+
+movieRouter.get('/movies', (req, res) => {
+    console.log(req.query)
 })
 
 export default movieRouter
